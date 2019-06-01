@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 
 @section('content')
@@ -18,3 +18,6 @@
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
 @endsection
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>

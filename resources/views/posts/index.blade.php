@@ -1,7 +1,8 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 
 @section('content')
+
     <h1>Posts</h1>
     @if(count($posts) > 0)
         @foreach ($posts as $post)
@@ -15,3 +16,7 @@
         <p>No Posts</p>
     @endif  
 @endsection
+
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>

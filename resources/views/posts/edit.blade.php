@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
     <h1>Edite Post</h1>
@@ -16,3 +16,6 @@
         {{Form::submit('Submit', ['class'=> 'btn btn-default btn-outline-dark'])}}
     {!!Form::close()!!}
 @endsection
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
