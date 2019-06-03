@@ -2,26 +2,35 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-left">
-        <div class="col-xl-6">
-            <div class="card">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card-body">
                 <div class="card-header">
-                   <strong>Dashboard</strong>
+                  <h1><strong>Dashboard</strong></h1>
                 </div>
-                <div class="card-body">
-                    <a class="btn btn-default btn-outline-dark" href="/posts/create">Create Posts</a>
+                <div class="jumbotron text-center">
                     <h3>Your Blog Posts</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-header">
-                    <strong>Posts</strong>
-                </div>
-                <div class="card-body">
-                    <h3>Lorem ipsum dolor sit amet</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et, quas pariatur fugiat quos maxime nulla suscipit adipisci autem quae maiores perspiciatis debitis odit reprehenderit iste tenetur iure ipsa molestias. </p>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Title</th>
+                            <th></th>
+                            <th></th>
+                            
+                        </tr>
+                        @foreach($posts as $post)
+                        <tr>
+                            <th>{{$post->title}}</th>
+                            <th><a href="/posts/{{$post->id}}/edit" class="btn btn-default btn-outline-dark">edit</a></th>
+                            <th>    {!!Form::open(['action' => ['PostController@destroy', $post->id], 'method' => 'POST', 'class' => 'button'])!!}
+                                {{Form::hidden('_method', 'DELETE')}}
+                                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                            {!!Form::close()!!}</th>
+                        </tr>
+                        @endforeach
+                     </table>
+                     <div class="panel-body text-left">
+                        <a class="btn btn-outline-dark" href="/posts/create">Create Posts</a>
+                    </div>
                 </div>
             </div>
         </div>
